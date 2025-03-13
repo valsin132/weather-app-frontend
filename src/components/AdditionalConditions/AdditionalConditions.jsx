@@ -1,10 +1,9 @@
+import Card from '../Card/Card'
 import styles from './AdditionalConditions.module.scss'
 
 const AdditionalConditions = ({ weatherData }) => {
   return (
-    <div className={styles.additionalConditions}>
-      <h2>Additional conditions</h2>
-      <hr />
+    <Card title={'Additional Conditions'}>
       <div className={styles.conditionsGrid}>
         <div>
           <p>Feels Like</p>
@@ -19,7 +18,7 @@ const AdditionalConditions = ({ weatherData }) => {
           <p>{weatherData.main.pressure} hPa</p>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 

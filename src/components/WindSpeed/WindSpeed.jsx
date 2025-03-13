@@ -1,11 +1,10 @@
 import ReactSpeedometer from 'react-d3-speedometer'
+import Card from '../Card/Card'
 import styles from './WindSpeed.module.scss'
 
 const WindSpeed = ({ windSpeed }) => {
   return (
-    <div className={styles.windSpeed}>
-      <h2>Wind Speed</h2>
-      <hr />
+    <Card title={'Wind Speed'}>
       <div className={styles.speedometer}>
         {windSpeed !== undefined && (
           <ReactSpeedometer
@@ -25,7 +24,7 @@ const WindSpeed = ({ windSpeed }) => {
           />
         )}
       </div>
-    </div>
+    </Card>
   )
 }
 

@@ -1,3 +1,4 @@
+import Card from '../Card/Card'
 import styles from './WeatherForecast.module.scss'
 
 const getDayOfWeek = (timestamp) => {
@@ -28,9 +29,7 @@ const WeatherForecast = ({ weatherDataHourly }) => {
   }
 
   return (
-    <div className={styles.weatherForecast}>
-      <h2 className={styles.header}>Weather forecast</h2>
-      <hr />
+    <Card title={'Weather Forecast'}>
       <div className={styles.forecastScroll}>
         <ul className={styles.forecastList}>
           {filteredData.map((data, index) => {
@@ -51,7 +50,7 @@ const WeatherForecast = ({ weatherDataHourly }) => {
           })}
         </ul>
       </div>
-    </div>
+    </Card>
   )
 }
 

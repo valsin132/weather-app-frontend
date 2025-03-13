@@ -2,6 +2,27 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.headerIcon {
+  height: 3rem;
+  width: 3rem;
+}
+
+.searchTopWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .infoWrapper {
@@ -14,4 +35,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+}
+
+@media screen and (max-width: '768px') {
+  .searchTopWrapper {
+    flex-direction: column;
+  }
 }

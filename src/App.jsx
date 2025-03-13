@@ -1,24 +1,42 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import cities from 'cities.json'
+import TopCities from './components/TopCities/TopCities'
 import SearchBar from './components/SearchBar/SearchBar'
 import WeatherInfo from './components/WeatherInfo/WeatherInfo'
 import WeatherForecast from './components/WeatherForecast/WeatherForecast'
 import WindSpeed from './components/WindSpeed/WindSpeed'
 import AdditionalConditions from './components/AdditionalConditions/AdditionalConditions'
+import { fetchWeatherData, saveSearch, fetchTopCities } from './api/searchApi'
+import { CiCloudSun } from 'react-icons/ci'
 import styles from './App.module.scss'
-
-const openWeatherMapApiKey = import.meta.env.VITE_OPENWEATHERMAP_API
 
 const App = () => {
   const [city, setCity] = useState('')
   const [citySuggestions, setCitySuggestions] = useState([])
   const [weatherData, setWeatherData] = useState(null)
   const [weatherDataHourly, setWeatherDataHourly] = useState(null)
+  const [topCities, setTopCities] = useState([])
 
   useEffect(() => {
-    fetchWeatherData({ name: 'Vilnius' })
+    handleInitialData()
+
+    fetchTopCities()
+      .then((data) => {
+        setTopCities(data)
+        localStorage.setItem('topCities', JSON.stringify(data))
+      })
+      .catch((error) => console.log('Error fetching top cities', error))
   }, [])
+
+  const handleInitialData = async () => {
+    try {
+      const { weatherData, weatherDataHourly } = await fetchWeatherData('Vilnius')
+      setWeatherData(weatherData)
+      setWeatherDataHourly(weatherDataHourly)
+    } catch (error) {
+      console.error('Error fetching initial weather data:', error)
+    }
+  }
 
   const handleCitySearch = (inputCity) => {
     setCity(inputCity)
@@ -28,34 +46,42 @@ const App = () => {
     setCitySuggestions(matchingCities)
   }
 
-  const fetchWeatherData = (selectedCity) => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity.name}&appid=${openWeatherMapApiKey}&units=metric`,
-      )
-      .then((response) => setWeatherData(response.data))
-      .catch((error) => console.error('Error fetching weather data:', error))
+  const handleFetchWeatherData = async (selectedCity) => {
+    try {
+      const { weatherData, weatherDataHourly } = await fetchWeatherData(selectedCity.name)
+      setWeatherData(weatherData)
+      setWeatherDataHourly(weatherDataHourly)
+      // save the search to the backend
+      await saveSearch(selectedCity.name)
+      console.log('Search saved successfully')
 
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity.name}&appid=${openWeatherMapApiKey}&units=metric`,
-      )
-      .then((response) => setWeatherDataHourly(response.data))
-      .catch((error) => console.error('Error fetching weather data:', error))
+      // refresh top cities after a new search
+      const updatedTopCities = await fetchTopCities()
+      setTopCities(updatedTopCities)
+      localStorage.setItem('topCities', JSON.stringify(updatedTopCities))
+    } catch (error) {
+      console.error('Error fetching weather data or saving search:', error)
+    }
 
     setCitySuggestions([])
-    console.log(weatherData)
-    console.log(weatherDataHourly)
   }
 
   return (
     <div className={styles.weatherApp}>
-      <SearchBar
-        city={city}
-        handleCitySearch={handleCitySearch}
-        citySuggestions={citySuggestions}
-        fetchWeatherData={fetchWeatherData}
-      />
+      <header className={styles.header}>
+        <CiCloudSun className={styles.headerIcon} />
+        <h1>Weather App</h1>
+      </header>
+      <div className={styles.searchTopWrapper}>
+        <SearchBar
+          city={city}
+          handleCitySearch={handleCitySearch}
+          citySuggestions={citySuggestions}
+          fetchWeatherData={handleFetchWeatherData}
+        />
+        <TopCities topCities={topCities} />
+      </div>
+
       {weatherData && <WeatherInfo weatherData={weatherData} />}
       <div className={styles.infoWrapper}>
         <WeatherForecast weatherDataHourly={weatherDataHourly} />

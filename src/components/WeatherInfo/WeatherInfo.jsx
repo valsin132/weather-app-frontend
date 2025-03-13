@@ -1,11 +1,11 @@
-import styles from "./WeatherInfo.module.scss"
+import styles from './WeatherInfo.module.scss'
 
 const WeatherInfo = ({ weatherData }) => {
   return (
-    <div className={styles.weatherInfo}>
-      <h1 className={styles.header}>
+    <div>
+      <h2 className={styles.cityName}>
         {weatherData.name} - {weatherData.sys.country}
-      </h1>
+      </h2>
     </div>
   )
 }
