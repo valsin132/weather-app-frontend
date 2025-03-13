@@ -1,0 +1,30 @@
+.weatherForecast {
+    width: 100%;
+    background: rgba(50, 50, 50, 0.4);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+}
+
+.header {
+    font-size: 1.5rem;
+}
+
+.forecastScroll {
+    overflow-x: auto;
+    display: flex;
+    gap: 20px;
+}
+
+.dayWithDate {
+    color: black;
+    display: block;
+    width: 100%;
+    position: sticky;
+}
+
+.forecastList {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}

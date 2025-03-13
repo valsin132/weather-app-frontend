@@ -1,0 +1,40 @@
+.searchBar {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(50, 50, 50, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+
+.searchLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.searchSuggestions {
+    margin-top: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    list-style: none;
+    padding: 0;
+}
+
+.searchSuggestion {
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.searchSuggestion:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
