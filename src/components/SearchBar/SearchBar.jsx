@@ -1,22 +1,22 @@
-import { useState, useEffect, useRef } from 'react'
-import { IoIosSearch } from 'react-icons/io'
-import Card from '../Card/Card'
-import styles from './SearchBar.module.scss'
+import { useState, useEffect, useRef } from 'react';
+import { IoIosSearch } from 'react-icons/io';
+import Card from '../Card/Card';
+import styles from './SearchBar.module.scss';
 
 const SearchBar = ({ city, handleCitySearch, citySuggestions, fetchWeatherData }) => {
-  const [showSuggestions, setShowSuggestions] = useState(false)
-  const searchRef = useRef(null)
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setShowSuggestions(false)
+        setShowSuggestions(false);
       }
-    }
+    };
 
-    document.addEventListener('click', handleClickOutside)
-    return () => document.removeEventListener('click', handleClickOutside)
-  }, [])
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
     <Card className={styles.container} showDivider={false}>
@@ -29,8 +29,8 @@ const SearchBar = ({ city, handleCitySearch, citySuggestions, fetchWeatherData }
             placeholder="Enter a city"
             value={city}
             onChange={(e) => {
-              handleCitySearch(e.target.value)
-              setShowSuggestions(true)
+              handleCitySearch(e.target.value);
+              setShowSuggestions(true);
             }}
             onFocus={() => setShowSuggestions(true)}
           />
@@ -42,8 +42,8 @@ const SearchBar = ({ city, handleCitySearch, citySuggestions, fetchWeatherData }
                 className={styles.searchSuggestion}
                 key={`${suggestion.name}-${suggestion.lat}`}
                 onClick={() => {
-                  fetchWeatherData(suggestion)
-                  setShowSuggestions(false)
+                  fetchWeatherData(suggestion);
+                  setShowSuggestions(false);
                 }}
               >
                 {suggestion.name}, {suggestion.country}
@@ -53,7 +53,7 @@ const SearchBar = ({ city, handleCitySearch, citySuggestions, fetchWeatherData }
         )}
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

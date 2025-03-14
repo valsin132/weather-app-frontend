@@ -1,6 +1,6 @@
-import ReactSpeedometer from 'react-d3-speedometer'
-import Card from '../Card/Card'
-import styles from './WindSpeed.module.scss'
+import ReactSpeedometer from 'react-d3-speedometer';
+import Card from '../Card/Card';
+import styles from './WindSpeed.module.scss';
 
 const WindSpeed = ({ windSpeed }) => {
   return (
@@ -25,7 +25,7 @@ const WindSpeed = ({ windSpeed }) => {
         )}
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default WindSpeed
+export default WindSpeed;

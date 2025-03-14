@@ -1,12 +1,62 @@
-# React + Vite
+Weather Application
+Overview
+This project is a weather forecast application developed for the JavaScript Application Developer Internship at IBM. It provides real-time weather data using the OpenWeatherMap API, with a React frontend and a Node.js backend for logging user interactions.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Frontend (React)
+✅ Responsive design
+✅ Searchable dropdown to select a city
+✅ Browser stores three most-viewed cities
+✅ Displays and suggests the most-viewed cities
+✅ Shows current weather conditions (temperature, wind, humidity, etc.)
+✅ Displays 5-day weather forecast
 
-Currently, two official plugins are available:
+Backend (Node.js)
+✅ Saves user actions into MongoDB
+✅ Stores three most-viewed cities in local storage
+✅ API connection to OpenWeatherMap for live data
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Installation Guide
 
-## Expanding the ESLint configuration
+Set Up Frontend
+Clone the Repository
+git clone https://github.com/valsin132/weather-app-frontend.git
+cd frontend
+npm install
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Environment Variables (.env in /frontend)
+VITE_OPENWEATHERMAP_API=your_api_key_here
+
+Set Up Backend
+Clone the Repository
+git clone https://github.com/valsin132/weather-app-backend.git
+cd backend
+npm install
+npm run dev
+
+Environment Variables (.env in /backend)
+PORT=
+MONGO_URI=your_mongo_database
+
+Usage Instructions
+Start typing a city name in the search bar.
+Select a city from the suggestions.
+The page will display the current weather and 5-day forecast.
+Three most-viewed cities will be stored and suggested.
+The backend logs each city selection with a timestamp.
+
+Technology Stack
+Frontend:
+React.js
+SCSS for styling
+LocalStorage for storing top 3 cities
+OpenWeatherMap API for weather data
+
+Backend:
+Node.js with Express.js
+CORS & dotenv
+
+Developed by Valdemaras
+
+

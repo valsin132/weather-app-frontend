@@ -1,5 +1,5 @@
-import Card from '../Card/Card'
-import styles from './AdditionalConditions.module.scss'
+import Card from '../Card/Card';
+import styles from './AdditionalConditions.module.scss';
 
 const AdditionalConditions = ({ weatherData }) => {
   return (
@@ -19,7 +19,7 @@ const AdditionalConditions = ({ weatherData }) => {
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default AdditionalConditions
+export default AdditionalConditions;

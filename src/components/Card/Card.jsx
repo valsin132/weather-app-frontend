@@ -1,4 +1,4 @@
-import styles from './Card.module.scss'
+import styles from './Card.module.scss';
 
 const Card = ({ children, title, className, showDivider = true }) => {
   return (
@@ -7,7 +7,7 @@ const Card = ({ children, title, className, showDivider = true }) => {
       {showDivider && <hr />}
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

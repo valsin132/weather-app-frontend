@@ -1,5 +1,5 @@
-import Card from '../Card/Card'
-import styles from './TopCities.module.scss'
+import Card from '../Card/Card';
+import styles from './TopCities.module.scss';
 
 const TopCities = ({ topCities }) => {
   return (
@@ -12,7 +12,7 @@ const TopCities = ({ topCities }) => {
         ))}
       </ul>
     </Card>
-  )
-}
+  );
+};
 
-export default TopCities
+export default TopCities;

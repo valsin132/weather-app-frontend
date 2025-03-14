@@ -1,4 +1,4 @@
-import styles from './WeatherInfo.module.scss'
+import styles from './WeatherInfo.module.scss';
 
 const WeatherInfo = ({ weatherData }) => {
   return (
@@ -7,7 +7,7 @@ const WeatherInfo = ({ weatherData }) => {
         {weatherData.name} - {weatherData.sys.country}
       </h2>
     </div>
-  )
-}
+  );
+};
 
-export default WeatherInfo
+export default WeatherInfo;
