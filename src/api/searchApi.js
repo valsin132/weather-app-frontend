@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_SERVER_URL || `https://weather-app-backend-green-gamma.vercel.app`;
+const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:8000';
 
 export const fetchWeatherData = async (cityName) => {
   const openWeatherMapApiKey = import.meta.env.VITE_OPENWEATHERMAP_API;
