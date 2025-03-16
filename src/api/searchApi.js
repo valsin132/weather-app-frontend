@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:8000';
 
 export const fetchWeatherData = async (cityName) => {
   const openWeatherMapApiKey = import.meta.env.VITE_OPENWEATHERMAP_API;
@@ -23,7 +23,7 @@ export const fetchWeatherData = async (cityName) => {
 
 export const saveSearch = async (selectedCity) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/api/search`, {
+    const response = await axios.post(`${API_URL}/api/search`, {
       selectedCity,
     });
     return response.data;
@@ -35,7 +35,7 @@ export const saveSearch = async (selectedCity) => {
 
 export const fetchTopCities = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/search/top`);
+    const response = await axios.get(`${API_URL}/api/search/top`);
     return response.data;
   } catch (error) {
     console.error('Error fetching top cities:', error);
