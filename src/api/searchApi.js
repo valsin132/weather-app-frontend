@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_SERVER_URL;
 
 export const fetchWeatherData = async (cityName) => {
   const openWeatherMapApiKey = import.meta.env.VITE_OPENWEATHERMAP_API;
