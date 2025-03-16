@@ -28,34 +28,34 @@ Environment Variables (.env in /frontend)
 VITE_OPENWEATHERMAP_API=your_api_key_here
 
 Set Up Backend
-Clone the Repository
-git clone https://github.com/valsin132/weather-app-backend.git
-cd backend
-npm install
-npm run dev
+* Clone the Repository
+* git clone https://github.com/valsin132/weather-app-backend.git
+* cd backend
+* npm install
+* npm run dev
 
 Environment Variables (.env in /backend)
-PORT=
-MONGO_URI=your_mongo_database
+* PORT=
+* MONGO_URI=your_mongo_database
 
 Usage Instructions
-Start typing a city name in the search bar.
-Select a city from the suggestions.
-The page will display the current weather and 5-day forecast.
-Three most-viewed cities will be stored and suggested.
-The backend logs each city selection with a timestamp.
+* Start typing a city name in the search bar.
+* Select a city from the suggestions.
+* The page will display the current weather and 5-day forecast.
+* Three most-viewed cities will be stored and suggested.
+* The backend logs each city selection with a timestamp.
 
 # Technology Stack
 Frontend:
-React.js
-SCSS for styling
-LocalStorage for storing top 3 cities
-OpenWeatherMap API for weather data
+* React.js
+* SCSS for styling
+* LocalStorage for storing top 3 cities
+* OpenWeatherMap API for weather data
 
 # Backend:
-Node.js with Express.js
-CORS & dotenv
+* Node.js with Express.js
+* CORS & dotenv
 
-# Developed by Valdemaras
+## Developed by Valdemaras
 
 
