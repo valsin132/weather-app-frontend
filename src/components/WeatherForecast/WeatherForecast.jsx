@@ -42,13 +42,13 @@ const WeatherForecast = ({ weatherDataHourly }) => {
                   if (getDayOfWeek(data.dt) === dayName) {
                     return (
                       <li key={data.dt}>
-                        <p>{data.dt_txt.split(' ')[1]}</p>
+                        <p>{data.dt_txt.split(' ')[1].slice(0, 5)}</p>
                         <img
                           src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
                           alt="Weather Icon"
                         />
                         <p>
-                          {data.main.temp} <span>°C</span>
+                          {data.main.temp.toFixed(1)} <span>°C</span>
                         </p>
                       </li>
                     );

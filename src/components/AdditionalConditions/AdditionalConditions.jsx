@@ -7,11 +7,11 @@ const AdditionalConditions = ({ weatherData }) => {
       <div className={styles.conditionsGrid}>
         <div>
           <p>Feels Like</p>
-          <p>{weatherData.main.feels_like}°C</p>
+          <p>{weatherData.main.feels_like.toFixed(1)} °C</p>
         </div>
         <div>
           <p>Humidity</p>
-          <p>{weatherData.main.humidity}%</p>
+          <p>{weatherData.main.humidity} %</p>
         </div>
         <div>
           <p>Pressure</p>
