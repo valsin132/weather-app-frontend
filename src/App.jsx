@@ -6,6 +6,7 @@ import WeatherInfo from './components/WeatherInfo/WeatherInfo';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
 import WindSpeed from './components/WindSpeed/WindSpeed';
 import AdditionalConditions from './components/AdditionalConditions/AdditionalConditions';
+import Footer from './components/Footer/Footer';
 import { fetchWeatherData, saveSearch, fetchTopCities } from './api/searchApi';
 import { CiCloudSun } from 'react-icons/ci';
 import styles from './App.module.scss';
@@ -81,7 +82,6 @@ const App = () => {
         />
         <TopCities topCities={topCities} />
       </div>
-
       {weatherData && <WeatherInfo weatherData={weatherData} />}
       <div className={styles.infoWrapper}>
         <WeatherForecast weatherDataHourly={weatherDataHourly} />
@@ -90,6 +90,7 @@ const App = () => {
           {weatherData && <AdditionalConditions weatherData={weatherData} />}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

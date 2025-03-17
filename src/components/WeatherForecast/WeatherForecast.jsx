@@ -41,7 +41,7 @@ const WeatherForecast = ({ weatherDataHourly }) => {
                 weatherDataHourly.list.map((data) => {
                   if (getDayOfWeek(data.dt) === dayName) {
                     return (
-                      <li key={data.dt}>
+                      <li className={styles.forecastItem} key={data.dt}>
                         <p>{data.dt_txt.split(' ')[1].slice(0, 5)}</p>
                         <img
                           src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
