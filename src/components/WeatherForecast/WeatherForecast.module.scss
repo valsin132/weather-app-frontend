@@ -5,6 +5,22 @@
     padding: 1rem;
 }
 
+.forecastScroll::-webkit-scrollbar {
+    border-radius: 50px;
+    height: 10px;
+    border: 1px solid #d5d5d5;
+}
+
+.forecastScroll::-webkit-scrollbar-track {
+    border-radius: 50px;
+    background: #eeeeee;
+}
+
+.forecastScroll::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #b0b0b0;
+}
+
 .dayWithDate {
     font-size: 1.2rem;
     font-weight: 600;
