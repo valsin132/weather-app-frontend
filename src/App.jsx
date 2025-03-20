@@ -17,6 +17,7 @@ const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [weatherDataHourly, setWeatherDataHourly] = useState(null);
   const [topCities, setTopCities] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     handleInitialData();
@@ -30,12 +31,15 @@ const App = () => {
   }, []);
 
   const handleInitialData = async () => {
+    setLoading(true);
     try {
       const { weatherData, weatherDataHourly } = await fetchWeatherData('Vilnius');
       setWeatherData(weatherData);
       setWeatherDataHourly(weatherDataHourly);
     } catch (error) {
       console.error('Error fetching initial weather data:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,6 +52,7 @@ const App = () => {
   };
 
   const handleFetchWeatherData = async (selectedCity) => {
+    setLoading(true);
     try {
       const { weatherData, weatherDataHourly } = await fetchWeatherData(selectedCity.name);
       setWeatherData(weatherData);
@@ -62,9 +67,10 @@ const App = () => {
       localStorage.setItem('topCities', JSON.stringify(updatedTopCities));
     } catch (error) {
       console.error('Error fetching weather data or saving search:', error);
+    } finally {
+      setLoading(false);
+      setCitySuggestions([]);
     }
-
-    setCitySuggestions([]);
   };
 
   return (
@@ -80,7 +86,7 @@ const App = () => {
           citySuggestions={citySuggestions}
           fetchWeatherData={handleFetchWeatherData}
         />
-        <TopCities topCities={topCities} />
+        <TopCities topCities={topCities} loading={loading} />
       </div>
       {weatherData && <WeatherInfo weatherData={weatherData} />}
       <div className={styles.infoWrapper}>

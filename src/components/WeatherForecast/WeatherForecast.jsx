@@ -1,11 +1,6 @@
+import { getDayOfWeek } from '../../helpers/getDayOfWeek';
 import Card from '../Card/Card';
 import styles from './WeatherForecast.module.scss';
-
-const getDayOfWeek = (timestamp) => {
-  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const date = new Date(timestamp * 1000);
-  return `${daysOfWeek[date.getDay()]} ${date.getDate()}`;
-};
 
 const WeatherForecast = ({ weatherDataHourly }) => {
   // function to get unique day names (show only 5 days)
