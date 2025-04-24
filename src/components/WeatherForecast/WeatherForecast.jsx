@@ -27,7 +27,12 @@ const WeatherForecast = ({ weatherDataHourly }) => {
 
   return (
     <Card title={'Weather Forecast'}>
-      <div className={styles.forecastScroll}>
+      <div
+        className={styles.forecastScroll}
+        role="region"
+        aria-label="5-day weather forecast"
+        tabIndex="0"
+      >
         {uniqueDayNames.map((dayName) => (
           <div key={dayName}>
             <span className={styles.dayWithDate}>{dayName}</span>
@@ -40,7 +45,7 @@ const WeatherForecast = ({ weatherDataHourly }) => {
                         <p>{data.dt_txt.split(' ')[1].slice(0, 5)}</p>
                         <img
                           src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
-                          alt="Weather Icon"
+                          alt={data.weather[0].description || 'Weather icon'}
                         />
                         <p>
                           {data.main.temp.toFixed(1)} <span>°C</span>

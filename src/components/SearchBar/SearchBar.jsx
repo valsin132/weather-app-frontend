@@ -33,20 +33,25 @@ const SearchBar = ({ city, handleCitySearch, citySuggestions, fetchWeatherData }
               setShowSuggestions(true);
             }}
             onFocus={() => setShowSuggestions(true)}
+            tabIndex="0"
           />
         </label>
         {showSuggestions && citySuggestions.length > 0 && (
-          <ul className={styles.searchSuggestions}>
+          <ul className={styles.searchSuggestions} role="listbox" aria-live="polite">
             {citySuggestions.map((suggestion) => (
-              <li
-                className={styles.searchSuggestion}
-                key={`${suggestion.name}-${suggestion.lat}`}
-                onClick={() => {
-                  fetchWeatherData(suggestion);
-                  setShowSuggestions(false);
-                }}
-              >
-                {suggestion.name}, {suggestion.country}
+              <li key={`${suggestion.name}-${suggestion.lat}`}>
+                <button
+                  className={styles.searchSuggestion}
+                  onClick={() => {
+                    fetchWeatherData(suggestion);
+                    setShowSuggestions(false);
+                  }}
+                  role="option"
+                  tabIndex="0"
+                  aria-label={`Select ${suggestion.name}, ${suggestion.country}`}
+                >
+                  {suggestion.name}, {suggestion.country}
+                </button>
               </li>
             ))}
           </ul>

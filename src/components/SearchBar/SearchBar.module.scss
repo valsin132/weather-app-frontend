@@ -32,9 +32,12 @@
 }
 
 .searchSuggestion {
+    font-size: 16px;
     padding: 5px;
     cursor: pointer;
     color: white;
+    border: none;
+    background: none;
 }
 
 .searchSuggestion:hover {

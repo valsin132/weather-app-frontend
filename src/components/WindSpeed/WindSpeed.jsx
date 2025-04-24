@@ -5,7 +5,7 @@ import styles from './WindSpeed.module.scss';
 const WindSpeed = ({ windSpeed }) => {
   return (
     <Card title={'Wind Speed'}>
-      <div className={styles.speedometer}>
+      <div className={styles.speedometer} tabIndex="0" aria-label="wind speed">
         {windSpeed !== undefined && (
           <ReactSpeedometer
             minValue={0}

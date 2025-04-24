@@ -4,7 +4,7 @@ import styles from './AdditionalConditions.module.scss';
 const AdditionalConditions = ({ weatherData }) => {
   return (
     <Card title={'Additional Conditions'}>
-      <div className={styles.conditionsGrid}>
+      <div className={styles.conditionsGrid} tabIndex="0" aria-label="additional conditions">
         <div>
           <p>Feels Like</p>
           <p>{weatherData.main.feels_like.toFixed(1)} °C</p>
